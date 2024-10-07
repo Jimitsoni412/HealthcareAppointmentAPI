@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  web:
+    image: healthcareapi
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: jimit
+      MYSQL_DATABASE: HealthcareDB
+    ports:
+      - "3306:3306"
